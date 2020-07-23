@@ -2,7 +2,8 @@ from fedora:rawhide
 
 MAINTAINER <yanqiyu@fedoraproject.org>
 
-RUN dnf install systemd passwd -y \
+RUN 	dnf update -y \
+	&& dnf install systemd passwd -y \
 	&& dnf clean all \
 	&& passwd -d root \
 	&& ln /dev/null -s /etc/systemd/system/systemd-journald-audit.socket \
