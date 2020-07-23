@@ -1,4 +1,4 @@
-from fedora:rawhide
+from registry.fedoraproject.org/fedora:rawhide
 
 MAINTAINER <yanqiyu@fedoraproject.org>
 
