@@ -1,9 +1,8 @@
-from registry.fedoraproject.org/fedora:rawhide
+from fedora:latest
 
 MAINTAINER <yanqiyu@fedoraproject.org>
 
-RUN 	dnf update -y \
-	&& dnf install systemd passwd -y \
+RUN	   dnf --setopt=tsflags=nodocs install systemd passwd -y \
 	&& dnf clean all \
 	&& passwd -d root \
 	&& ln /dev/null -s /etc/systemd/system/systemd-journald-audit.socket \
@@ -12,5 +11,5 @@ RUN 	dnf update -y \
 	&& ln /dev/null -s /etc/systemd/system/sys-kernel-config.mount \
 	&& ln /dev/null -s /etc/systemd/system/proc-sys-fs-binfmt_misc.automount \
 	&& rm -rf /tmp/*
-ENTRYPOINT ["/usr/lib/systemd/systemd", "--system", "--system-unit=basic.target"]
 
+ENTRYPOINT ["/usr/lib/systemd/systemd", "--system", "--system-unit=basic.target"]
